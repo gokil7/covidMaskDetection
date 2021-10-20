@@ -56,25 +56,20 @@ class VideoCamera(object):
                 x, y, w, h = box
                 # Taking the Face part in the Image as Region of Interest.
                 roi = img[y:y+h, x:x+w]
-                # roi = img[y:y+w,x:x+w]
+
                 roi_gray = gray[y:y + h, x:x + w]
 
                 # Let us resize the Image accordingly to use pretrained model.
                 roi = cv2.resize(roi, (224, 224))
                 normalized=roi/255.0
-                # reshaped=np.reshape(normalized,(1, 224, 224))
-                # reshaped=tf.reshape(normalized, [-1, 224, 224, 3])
                 reshaped=normalized.reshape(1, 224,224,3)
-                # reshaped1=np.squeeze(reshaped).shape
 
-                # print(reshaped.shape)
 
                 prediction = model.predict_emotion(
                     reshaped)
-                # print(prediction)
-                # label=np.argmax(self.result,axis=1)[0]
 
-                Symbols = {"Mask": ":)", "No Mask": ":}"}
+
+
 
                 if(prediction != "No Mask"):
                     prediction = "Mask"
