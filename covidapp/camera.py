@@ -5,12 +5,12 @@ import tensorflow as tf
 
 from cmodel import FacialExpressionModel
 
-model = FacialExpressionModel("/home/gokil7/Documents/Productivity/Programming/DeepLearning/MaskDetection/maskDetection/Covid/covidapp/resc/modelTransferLearning.model")
+model = FacialExpressionModel("modelTransferLearning.model")
 
 # Creating an instance of the class with the parameters as model and its weights.
 
 # Loading the classifier from the file.
-facec = cv2.CascadeClassifier('/home/gokil7/Documents/Productivity/Programming/DeepLearning/MaskDetection/maskDetection/Covid/covidapp/resc/haarcascade_frontalface_default.xml')
+facec = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 bw_threshold = 80
 
 class VideoCamera(object):
