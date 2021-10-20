@@ -5,12 +5,12 @@ import tensorflow as tf
 
 from cmodel import FacialExpressionModel
 
-model = FacialExpressionModel("/home/gokil7/Documents/Productivity/Programming/DeepLearning/MaskDetection/maskDetection/Covid/covidapp/resc/modelTransferLearning.model")
+model = FacialExpressionModel("modelTransferLearning.model")
 
 # Creating an instance of the class with the parameters as model and its weights.
 
 # Loading the classifier from the file.
-facec = cv2.CascadeClassifier('/home/gokil7/Documents/Productivity/Programming/DeepLearning/MaskDetection/maskDetection/Covid/covidapp/resc/haarcascade_frontalface_default.xml')
+facec = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 bw_threshold = 80
 
 class VideoCamera(object):
@@ -56,25 +56,20 @@ class VideoCamera(object):
                 x, y, w, h = box
                 # Taking the Face part in the Image as Region of Interest.
                 roi = img[y:y+h, x:x+w]
-                # roi = img[y:y+w,x:x+w]
+
                 roi_gray = gray[y:y + h, x:x + w]
 
                 # Let us resize the Image accordingly to use pretrained model.
                 roi = cv2.resize(roi, (224, 224))
                 normalized=roi/255.0
-                # reshaped=np.reshape(normalized,(1, 224, 224))
-                # reshaped=tf.reshape(normalized, [-1, 224, 224, 3])
                 reshaped=normalized.reshape(1, 224,224,3)
-                # reshaped1=np.squeeze(reshaped).shape
 
-                # print(reshaped.shape)
 
                 prediction = model.predict_emotion(
                     reshaped)
-                # print(prediction)
-                # label=np.argmax(self.result,axis=1)[0]
 
-                Symbols = {"Mask": ":)", "No Mask": ":}"}
+
+
 
                 if(prediction != "No Mask"):
                     prediction = "Mask"
