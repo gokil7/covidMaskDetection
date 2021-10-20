@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+
+    <!--Form Validation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'covidapp/startStyle.css' %}">
+    <!-- <link rel="stylesheet" href="start.css"> -->
+
+</head>
+
+<title>covid</title>
+</head>
+
+<body>
+
+    <!--Navbar-->
+    <ul class="nav justify-content-end">
+        {% if user.is_authenticated %}
+        <li class="nav-item"><a class="nav-link disabled" aria-current="page" href="#"><p class="lgn">Hi,{{user.username}}</p></a>
+        <li class="nav-item lgn-div">
+           | </li> 
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="logout"><p class="lgn">Logout</p></a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="login"><p class="lgn">Login</p></a></li>
+        <li class="nav-item lgn-div">
+           | </li>    
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="registration"><p class="lgn">Signup</p></a></li>
+        {% endif %}
+        <li class="nav-item lgn-div">
+           | </li>  
+
+        <li class="nav-item">
+            <a class="nav-link" href="#"><p class="lgn"> Design</p></a>
+        </li>
+    </ul>
+
+
+    <section class="main container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <section class="video ">
+                        <div class="videoframe "><img src="{% url 'video_feed' %}" class="feed"></div>
+
+                    </section>
+                </div>
+                <div class="col-lg-6">
+                    <section class="row-6 section2">
+                        <div class="covid">
+                            <div class="row">
+                                <div class="country container">
+                                    <div id="countryname">IN</div>
+                                    <div class="row">
+                                        <div class="col cCol">
+                                            <p><i class="fas fa-long-arrow-alt-up tArrow "></i>
+                                                <p id="tConfDelta" class="confDelta tDelta"></p>
+                                            </p>
+                                            <br>
+                                            <p class="tCircle"><i class="fas fa-circle confCircle " id="cCircle"></i>
+                                                <p id="tConfirmed" class="tStats"></p>
+                                            </p>
+                                        </div>
+                                        <div class="col aCol">
+                                            <p><i class="fas fa-circle activeCircle " id="aCircle"></i>
+                                                <p id="tActive" class="tStats"></p>
+                                            </p>
+                                            <br>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col rCol">
+                                            <p><i class="fas fa-long-arrow-alt-up tArrow"></i>
+                                                <p id="tRecvDelta" class="recvDelta tDelta"></p>
+                                            </p>
+
+                                            <br>
+                                            <p><i class="fas fa-circle recvCircle " id="rCircle"></i>
+                                                <p id="tRecovered" class="tStats"></p>
+                                            </p>
+                                        </div>
+                                        <div class="col dCol">
+                                            <p><i class="fas fa-long-arrow-alt-up tArrow"></i>
+                                                <p id="tDeathDelta" class="deathDelta tDelta"></p>
+                                            </p>
+
+                                            <br>
+                                            <p><i class="fas fa-circle deathCircle " id="dCircle"></i>
+                                                <p id="tDeath" class="tStats"></p>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <div class="indicator">
+                                        <i class="fas fa-circle confCircle legend"></i>
+                                        <div> Confirmed&emsp; &nbsp;</div>
+                                        <i class="fas fa-circle activeCircle legend"></i>
+                                        <div> Active&emsp; &nbsp;</div>
+                                        <i class="fas fa-circle recvCircle legend"></i>
+                                        <div> Recovered&emsp; &nbsp;</div>
+                                        <i class="fas fa-circle deathCircle legend"></i>
+                                        <div> Deceased&emsp; &nbsp;</div>
+                                    </div>
+
+                                </div>
+                                <div class="states container">
+                                    <div class="row">
+                                        <section class="col rank f">
+                                            <div class="stateName">
+                                                <p id="firstState"></p>
+                                            </div>
+                                            <p><i class="fas fa-long-arrow-alt-up sArrow" id="1ca"></i>
+                                                <p id="firstConfDelta" class="confDelta delta"></p>
+                                            </p>
+                                            <br>
+                                            <p><i class="fas fa-circle confCircle  sCircle"></i>
+                                                <p id="firstConf"></p>
+                                            </p>
+                                            <br>
+                                            <p><i class="fas fa-circle activeCircle sCircle"></i>
+                                                <p id="firstActive"></p>
+                                            </p>
+                                            <br>
+                                            <p><i class="fas fa-long-arrow-alt-up sArrow" id="1ra"></i>
+                                                <p id="firstRecvDelta" class="recvDelta delta"></p>
+                                            </p>
+
+                                            <br>
+                                            <p><i class="fas fa-circle recvCircle sCircle"></i>
+                                                <p id="firstRecv"></p>
+                                            </p>
+                                            <br>
+                                            <p><i class="fas fa-long-arrow-alt-up sArrow" id="1da"></i>
+                                                <p id="firstDeathDelta" class="deathDelta delta"></p>
+                                            </p>
+
+                                            <br>
+                                            <p><i class="fas fa-circle deathCircle sCircle"></i>
+                                                <p id="firstDeath"></p>
+                                            </p>
+                                        </section>
+                                        <section class="col rank s">
+                                            <div class="stateName">
+                                                <p id="secondState"></p>
+                                            </div>
+                                            <p><i class="fas fa-long-arrow-alt-up arrow sArrow" id="2ca"></i>
+                                                <p id="secondConfDelta" class="confDelta delta"></p>
+                                            </p>
+
+                                            <br>
+                                            <p><i class="fas fa-circle confCircle sCircle"></i>
+                                                <p id="secondConf"></p>
+                                            </p>
+                                            <br>
+                                            <p><i class="fas fa-circle activeCircle sCircle"></i>
+                                                <p id="secondActive"></p>
+                                            </p>
+                                            <br>
+                                            <p><i class="fas fa-long-arrow-alt-up arrow sArrow" id="2ra"></i>
+                                                <p id="secondRecvDelta" class="recvDelta delta"></p>
+                                            </p>
+
+                                            <br>
+                                            <p><i class="fas fa-circle recvCircle sCircle"></i>
+                                                <p id="secondRecv"></p>
+                                            </p>
+                                            <br>
+                                            <p><i class="fas fa-long-arrow-alt-up arrow sArrow" id="2da"></i>
+                                                <p id="secondDeathDelta" class="deathDelta delta"></p>
+                                            </p>
+
+                                            <br>
+                                            <p><i class="fas fa-circle deathCircle sCircle"></i>
+                                                <p id="secondDeath"></p>
+                                            </p>
+                                        </section>
+                                        <section class="col rank t">
+                                            <div class="stateName">
+                                                <p id="thirdState"></p>
+                                            </div>
+                                            <p><i class="fas fa-long-arrow-alt-up sArrow" id="3ca"></i>
+                                                <p id="thirdConfDelta" class="confDelta delta"></p>
+                                            </p>
+
+                                            <br>
+                                            <p><i class="fas fa-circle confCircle sCircle"></i>
+                                                <p id="thirdConf"></p>
+                                            </p>
+                                            <br>
+                                            <p><i class="fas fa-circle activeCircle sCircle"></i>
+                                                <p id="thirdActive"></p>
+                                            </p>
+                                            <br>
+                                            <p><i class="fas fa-long-arrow-alt-up sArrow" id="3ra"></i>
+                                                <p id="thirdRecvDelta" class="recvDelta delta"></p>
+                                            </p>
+
+                                            <br>
+                                            <p><i class="fas fa-circle recvCircle sCircle"></i>
+                                                <p id="thirdRecv"></p>
+                                            </p>
+                                            <br>
+                                            <p><i class="fas fa-long-arrow-alt-up sArrow" id="3da"></i>
+                                                <p id="thirdDeathDelta" class="deathDelta delta"></p>
+                                            </p>
+
+                                            <br>
+                                            <p><i class="fas fa-circle deathCircle sCircle"></i>
+                                                <p id="thirdDeath"></p>
+                                            </p>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="log"><div class="topic">FACE <br>MASK <br>DETECTOR</div></div>
+                    </section>
+                </div>
+
+            </div>
+            <footer class="footer">
+                <div class="container">
+                    <span>Created with <span class="love">♥️</span> by Gokil  |  <a href="https://github.com/gokil7/covidMaskDetection.git"
+                            target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-lg"
+                                style="color:rgb(255, 255, 255);"></i></a></span>
+                </div>
+            </footer>
+        </div>
+    </section>
+
+    <section class="back">
+        <div class="area">
+            <ul class="circles">
+                <li><i class="fas fa-virus"></i></li>
+                <li><i class="fas fa-virus"></i></li>
+                <li><i class="fas fa-virus"></i></li>
+                <li><i class="fas fa-virus"></i></li>
+                <li><i class="fas fa-virus"></i></li>
+                <li><i class="fas fa-virus"></i></li>
+                <li><i class="fas fa-virus"></i></li>
+                <li><i class="fas fa-virus"></i></li>
+                <li><i class="fas fa-virus"></i></li>
+                <li><i class="fas fa-virus"></i></li>
+                <li><i class="fas fa-virus"></i></li>
+            </ul>
+        </div>
+    </section>
+    
+    {% comment %} <script src="static/covidapp/login.js"></script> {% endcomment %}
+    {% comment %} <script src="static/covidapp/signup.js"></script> {% endcomment %}
+    <script src="static/covidapp/api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
