@@ -33,5 +33,5 @@ If I were to host this app live, then the project will be hosted on a Heroku ser
 around this WebRTC is used. So future work will be to implement WebRTC protocols in the project to communicate between server and client.
 
 
-### Thank You
+### Thank You 👋
 
