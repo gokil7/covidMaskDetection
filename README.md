@@ -17,12 +17,14 @@ A web application that detects if user is wearing mask or not. 😷
 * Every statistic is colour coded and automatically updates after a specified interval.
 * API used for tracking is procured from <a href="https://github.com/covid19india/api" target=”_blank”>covid19india.org</a>
 
+<img src="https://user-images.githubusercontent.com/51751331/138309779-51b9350a-9596-4464-ba80-3fb60799e796.jpg" width="60%"></img> 
+
 ## Login and Signup Form
 * A custom Login form with Username and Password Verification, along with Login with Google feature using Google's OAuth 2.0 API.
 * And a signup form with Email Validation, Password match Verification
 
 ## Modules Used:
-<a href="https://github.com/gokil7/covidMaskDetection/blob/main/requirements.txt" target=”_blank”>Requirements</a>
+<a href="https://github.com/gokil7/covidMaskDetection/blob/main/requirements.txt" target=”_blank”>Requirements.txt</a>
 
 ## Future Scope:
 * To store images of people "Not wearing Mask" onto a MongoDB database model and then to display them in a container.
