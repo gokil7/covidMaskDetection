@@ -29,7 +29,7 @@ A web application that detects if user is wearing mask or not. 😷
 ## Future Scope:
 * To store images of people "Not wearing Mask" onto a MongoDB database model and then to display them in a container.
 * To host this app live, probably to Heroku. Not able to currently do this, because as of now, project use OpenCV's cv2.VideoCapture() to capture the frames from webcam, but the drawback of this method being it works on the computer where the code is hosted.
-If I were to host this app live, then the project will be hosted on a Heroku server and thus will access that server's camera, which is not what we want, we want the client's camera, also there is no camera there.., so to work
+If I were to host this app live, then the project will be hosted on a Heroku server and thus will access that server's camera, which is not what we want, we want the client's camera, also there is no camera in server.., so to work
 around this WebRTC is used. So future work will be to implement WebRTC protocols in the project to communicate between server and client.
 
 
