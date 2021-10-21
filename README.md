@@ -22,6 +22,7 @@ A web application that detects if user is wearing mask or not. 😷
 * And a signup form with Email Validation, Password match Verification
 
 ## Modules Used:
+<a href="https://github.com/gokil7/covidMaskDetection/blob/main/requirements.txt">Requirements</a>
 
 ## Future Scope:
 * To store images of people "Not wearing Mask" onto a MongoDB database model and then to display them in a container.
